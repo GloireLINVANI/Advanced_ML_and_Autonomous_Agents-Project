@@ -3,6 +3,7 @@ package games.kac;
 import iialib.games.algs.AIPlayer;
 import iialib.games.algs.AbstractGame;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class KingAndCourtesanGame extends AbstractGame<KingAndCourtesanMove, KingAndCourtesanRole, KingAndCourtesanBoard> {
@@ -12,11 +13,20 @@ public class KingAndCourtesanGame extends AbstractGame<KingAndCourtesanMove, Kin
 
     public static void main(String[] args) {
 
-        //MyChallenger challenger = new MyChallenger();
-        //challenger.setBoardFromFile("example_file_to_read.txt");
+        MyChallenger challenger = new MyChallenger();
+        challenger.setRole("RED");
+        challenger.setBoardFromFile("example_file_to_read.txt");
 
         //KingAndCourtesanBoard board = new KingAndCourtesanBoard(9);
-        //System.out.println(challenger.getBoard().getBoardSize());
+        System.out.println("Initial Board");
+        System.out.println(challenger.getBoard());
+        String best_move = challenger.bestMove();
+        System.out.println("Best Move");
+        System.out.println(best_move);
+        challenger.iPlay(best_move);
+        System.out.println("Board after my move");
+        System.out.println(challenger.getBoard());
+        challenger.saveBoardToFile("example_file_to_write.txt");
 
         //KingAndCourtesanBoard board = challenger.getBoard();
         //System.out.println(board);

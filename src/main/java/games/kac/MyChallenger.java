@@ -1,7 +1,7 @@
 package games.kac;
 
 import iialib.games.algs.GameAlgorithm;
-import iialib.games.algs.algorithms.*;
+import iialib.games.algs.algorithms.IDAlphaBeta;
 import iialib.games.model.IChallenger;
 
 import java.io.BufferedReader;
@@ -83,10 +83,41 @@ public class MyChallenger implements IChallenger {
         return this.board.toString();
     }
 
-    public void saveBoardToFile(String fileName) {
+    /*public void saveBoardToFile(String fileName) {
         try {
             FileWriter writer = new FileWriter(fileName, false);
             writer.write(this.board.toString());
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }*/
+
+    public void saveBoardToFile(String fileName) {
+        try {
+            FileWriter writer = new FileWriter(fileName, false);
+
+            // Getting original board string
+            String originalBoard = this.board.toString();
+            String[] lines = originalBoard.split("\n");
+            StringBuilder modifiedBoard = new StringBuilder();
+
+            // Skipping the first line
+            for (int i = 1; i < lines.length; i++) {
+                String line = lines[i];
+
+                // Checking if this is a board row (starts with a letter but not "BLUE" or "RED")
+                if (!line.isEmpty() && Character.isLetter(line.charAt(0)) &&
+                        !line.startsWith("BLUE") && !line.startsWith("RED")) {
+                    // Removing the first character (row label)
+                    modifiedBoard.append(line.substring(1)).append("\n");
+                } else {
+                    // Keeping king position information as is
+                    modifiedBoard.append(line).append("\n");
+                }
+            }
+
+            writer.write(modifiedBoard.toString().trim());
             writer.close();
         } catch (Exception e) {
             e.printStackTrace();
