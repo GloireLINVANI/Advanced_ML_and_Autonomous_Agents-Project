@@ -14,7 +14,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class MyBenchMarkChallenger implements IChallenger {
-    private static final String teamName = "(BenchMark) Gloire LINVANI et Duc-Huy NGUYEN";
+    private static final String teamName = "(BenchMark) ID AlphaBeta";
     private KingAndCourtesanBoard board;
     private KingAndCourtesanRole role;
     private GameAlgorithm<KingAndCourtesanMove, KingAndCourtesanRole, KingAndCourtesanBoard> ai;
