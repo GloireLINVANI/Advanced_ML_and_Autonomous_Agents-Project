@@ -1,0 +1,266 @@
+Mar 06, 2025 7:23:41 AM games.kac.RL_Agents_KingAndCourtesanServer main
+INFO: King and Courtesan server started on port 42
+Mar 06, 2025 7:23:41 AM games.kac.RL_Agents_KingAndCourtesanServer main
+INFO: Configuration: boardSize=6, threads=10, clientTimeout=60s, verbose=false
+Mar 06, 2025 7:25:49 AM games.kac.RL_Agents_KingAndCourtesanServer main
+INFO: Client connected from /127.0.0.1
+Mar 06, 2025 7:25:49 AM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:55679: Game reset
+Mar 06, 2025 7:26:49 AM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler run
+WARNING: Error handling client /127.0.0.1:55679
+java.net.SocketTimeoutException: Read timed out
+	at java.base/sun.nio.ch.NioSocketImpl.timedRead(NioSocketImpl.java:273)
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:299)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:340)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:789)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:1025)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:333)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:376)
+	at java.base/sun.nio.cs.StreamDecoder.lockedRead(StreamDecoder.java:219)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:173)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:189)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:161)
+	at java.base/java.io.BufferedReader.implReadLine(BufferedReader.java:371)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:348)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:437)
+	at games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler.run(RL_Agents_KingAndCourtesanServer.java:317)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:577)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+
+Mar 06, 2025 7:26:49 AM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler run
+INFO: Client /127.0.0.1:55679 disconnected
+Mar 06, 2025 7:28:23 AM games.kac.RL_Agents_KingAndCourtesanServer main
+INFO: Client connected from /127.0.0.1
+Mar 06, 2025 7:28:23 AM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:55716: Move A0-B0 by RED
+Mar 06, 2025 7:28:53 AM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:55716: Move C4-B3 by BLUE
+Mar 06, 2025 7:28:54 AM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:55716: Move A2-B3 by RED
+Mar 06, 2025 7:29:54 AM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler run
+WARNING: Error handling client /127.0.0.1:55716
+java.net.SocketTimeoutException: Read timed out
+	at java.base/sun.nio.ch.NioSocketImpl.timedRead(NioSocketImpl.java:273)
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:299)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:340)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:789)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:1025)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:333)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:376)
+	at java.base/sun.nio.cs.StreamDecoder.lockedRead(StreamDecoder.java:219)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:173)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:189)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:161)
+	at java.base/java.io.BufferedReader.implReadLine(BufferedReader.java:371)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:348)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:437)
+	at games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler.run(RL_Agents_KingAndCourtesanServer.java:317)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:577)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+
+Mar 06, 2025 7:29:54 AM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler run
+INFO: Client /127.0.0.1:55716 disconnected
+Mar 06, 2025 7:32:56 AM games.kac.RL_Agents_KingAndCourtesanServer lambda$registerShutdownHook$0
+INFO: Shutdown signal received, stopping server...
+Mar 06, 2025 3:18:09 PM games.kac.RL_Agents_KingAndCourtesanServer main
+INFO: King and Courtesan server started on port 42
+Mar 06, 2025 3:18:09 PM games.kac.RL_Agents_KingAndCourtesanServer main
+INFO: Configuration: boardSize=6, threads=10, clientTimeout=60s, verbose=false
+Mar 06, 2025 3:18:36 PM games.kac.RL_Agents_KingAndCourtesanServer main
+INFO: Client connected from /127.0.0.1
+Mar 06, 2025 3:18:36 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50097: Game reset
+Mar 06, 2025 3:18:36 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50097: Close requested
+Mar 06, 2025 3:18:36 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler run
+INFO: Client /127.0.0.1:50097 disconnected
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer main
+INFO: Client connected from /127.0.0.1
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Game reset
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move D1-E1 by RED
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move E2-E1 by BLUE
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move A4-B5 by RED
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move F1-E0 by BLUE
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move B5-C5 by RED
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move D5-C5 by BLUE
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move A0-A1 by RED
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move D4-C3 by BLUE
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move B3-C4 by RED
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move D3-D2 by BLUE
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move A1-A2 by RED
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move E4-D4 by BLUE
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move C0-D1 by RED
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move C3-C2 by BLUE
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move B1-C2 by RED
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move F5-F4 by BLUE
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move A2-A3 by RED
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move F4-E4 by BLUE
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move D1-E0 by RED
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move E5-D5 by BLUE
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move A0-B1 by RED
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move F5-E5 by BLUE
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move B0-C0 by RED
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move F3-E2 by BLUE
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move B2-C3 by RED
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move E1-D1 by BLUE
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move C2-D3 by RED
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move D1-E0 by BLUE
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move C1-C2 by RED
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move E0-D0 by BLUE
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move C4-C5 by RED
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move F2-F1 by BLUE
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move C0-D0 by RED
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move D4-C3 by BLUE
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move D3-E3 by RED
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move D2-E3 by BLUE
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move C2-C3 by RED
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move E4-E3 by BLUE
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move C3-D4 by RED
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move E3-E2 by BLUE
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move A3-B3 by RED
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move E5-D4 by BLUE
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move A2-A3 by RED
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move D5-C5 by BLUE
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move B1-B2 by RED
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move E4-D3 by BLUE
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move D0-E1 by RED
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move F1-E1 by BLUE
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move B3-B4 by RED
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Move C5-B5 by BLUE
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50098: Close requested
+Mar 06, 2025 3:18:37 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler run
+INFO: Client /127.0.0.1:50098 disconnected
+Mar 06, 2025 3:44:21 PM games.kac.RL_Agents_KingAndCourtesanServer lambda$registerShutdownHook$0
+INFO: Shutdown signal received, stopping server...
+Mar 06, 2025 3:45:03 PM games.kac.RL_Agents_KingAndCourtesanServer main
+INFO: King and Courtesan server started on port 6
+Mar 06, 2025 3:45:03 PM games.kac.RL_Agents_KingAndCourtesanServer main
+INFO: Configuration: boardSize=6, threads=10, clientTimeout=60s, verbose=false
+Mar 06, 2025 3:46:10 PM games.kac.RL_Agents_KingAndCourtesanServer lambda$registerShutdownHook$0
+INFO: Shutdown signal received, stopping server...
+Mar 06, 2025 3:46:21 PM games.kac.RL_Agents_KingAndCourtesanServer main
+INFO: King and Courtesan server started on port 3
+Mar 06, 2025 3:46:21 PM games.kac.RL_Agents_KingAndCourtesanServer main
+INFO: Configuration: boardSize=6, threads=10, clientTimeout=60s, verbose=false
+Mar 06, 2025 3:47:56 PM games.kac.RL_Agents_KingAndCourtesanServer lambda$registerShutdownHook$0
+INFO: Shutdown signal received, stopping server...
+Mar 06, 2025 3:47:59 PM games.kac.RL_Agents_KingAndCourtesanServer main
+INFO: King and Courtesan server started on port 3
+Mar 06, 2025 3:47:59 PM games.kac.RL_Agents_KingAndCourtesanServer main
+INFO: Configuration: boardSize=6, threads=10, clientTimeout=60s, verbose=false
+Mar 06, 2025 3:48:12 PM games.kac.RL_Agents_KingAndCourtesanServer lambda$registerShutdownHook$0
+INFO: Shutdown signal received, stopping server...
+Mar 06, 2025 3:52:39 PM games.kac.RL_Agents_KingAndCourtesanServer main
+INFO: King and Courtesan server started on port 3
+Mar 06, 2025 3:52:39 PM games.kac.RL_Agents_KingAndCourtesanServer main
+INFO: Configuration: boardSize=6, threads=10, clientTimeout=60s, verbose=false
+Mar 06, 2025 3:53:08 PM games.kac.RL_Agents_KingAndCourtesanServer lambda$registerShutdownHook$0
+INFO: Shutdown signal received, stopping server...
+Mar 06, 2025 3:53:53 PM games.kac.RL_Agents_KingAndCourtesanServer main
+INFO: King and Courtesan server started on port 3
+Mar 06, 2025 3:53:53 PM games.kac.RL_Agents_KingAndCourtesanServer main
+INFO: Configuration: boardSize=6, threads=10, clientTimeout=60s, verbose=false
+Mar 06, 2025 3:55:14 PM games.kac.RL_Agents_KingAndCourtesanServer main
+INFO: Client connected from /127.0.0.1
+Mar 06, 2025 3:55:14 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50233: Game reset
+Mar 06, 2025 3:55:14 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50233: Move C2-D2 by RED
+Mar 06, 2025 3:55:45 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50233: Move D3-D2 by BLUE
+Mar 06, 2025 3:55:46 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50233: Move A3-B4 by RED
+Mar 06, 2025 3:56:17 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50233: Move C4-B4 by BLUE
+Mar 06, 2025 3:56:18 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50233: Move B1-C2 by RED
+Mar 06, 2025 3:56:49 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50233: Move B4-A4 by BLUE
+Mar 06, 2025 3:56:50 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50233: Move E0-E1 by RED
+Mar 06, 2025 3:57:21 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50233: Move E2-E1 by BLUE
+Mar 06, 2025 3:57:22 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50233: Move A0-B1 by RED
+Mar 06, 2025 3:57:53 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50233: Move A4-B3 by BLUE
+Mar 06, 2025 3:57:54 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50233: Move A2-B3 by RED
+Mar 06, 2025 3:58:25 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50233: Move D4-D3 by BLUE
+Mar 06, 2025 3:58:26 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50233: Move B3-B4 by RED
+Mar 06, 2025 3:58:45 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50233: Move C5-B4 by BLUE
+Mar 06, 2025 3:58:46 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50233: Move B2-C3 by RED
+Mar 06, 2025 3:59:14 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50233: Move B4-C3 by BLUE
+Mar 06, 2025 3:59:15 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50233: Move B1-C2 by RED
+Mar 06, 2025 3:59:16 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50233: Game over, BLUE wins
+Mar 06, 2025 3:59:16 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50233: Move C3-C2 by BLUE (GAME OVER)
+Mar 06, 2025 3:59:16 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler handleCommand
+INFO: Client /127.0.0.1:50233: Close requested
+Mar 06, 2025 3:59:16 PM games.kac.RL_Agents_KingAndCourtesanServer$ClientHandler run
+INFO: Client /127.0.0.1:50233 disconnected

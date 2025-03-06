@@ -22,8 +22,7 @@ import java.util.ArrayList;
 public class IDAlphaBetaServer {
     private static final int DEFAULT_PORT = 43;
     private static int searchDepth = 8;
-    private static long timeLimit = 10000; // milliseconds
-    private static boolean useTranspositionTable = true;
+    private static long timeLimit = 15000; // milliseconds
 
     public static void main(String[] args) {
         // Parse command line arguments
@@ -52,17 +51,17 @@ public class IDAlphaBetaServer {
         // Get time limit if specified
         if (cmd.hasOption('t')) {
             try {
-                timeLimit = Long.parseLong(cmd.getOptionValue('t'));
-                System.out.println("Using time limit: " + timeLimit + "ms");
+                timeLimit = 1000 * Long.parseLong(cmd.getOptionValue('t'));
+               // System.out.println("Using time limit: " + timeLimit/1000 + "s");
             } catch (NumberFormatException e) {
-                System.err.println("Invalid time limit, using default: " + timeLimit + "ms");
+                System.err.println("Invalid time limit, using default: " + timeLimit / 1000 + "s");
             }
         }
 
 
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             System.out.println("ID Alpha-Beta server started on port " + port);
-            System.out.println("Configuration: depth=" + searchDepth + ", timeLimit=" + timeLimit + "ms, transpositionTable=" + useTranspositionTable);
+            System.out.println("Configuration: depth=" + searchDepth + ", timeLimit=" + timeLimit/1000 + "s");
 
             // Main server loop - accept and handle client connections
             while (true) {
@@ -98,7 +97,7 @@ public class IDAlphaBetaServer {
         Option depthOption = Option.builder("d").longOpt("depth").hasArg(true).desc("Search depth (default: " + searchDepth + ")").required(false).build();
 
         // Add option for time limit
-        Option timeLimitOption = Option.builder("t").longOpt("time-limit").hasArg(true).desc("Time limit in milliseconds (default: " + timeLimit + ")").required(false).build();
+        Option timeLimitOption = Option.builder("t").longOpt("time-limit").hasArg(true).desc("Time limit in seconds (default (ms): " + timeLimit + ")").required(false).build();
 
         options.addOption(portOption);
         options.addOption(depthOption);
@@ -202,9 +201,8 @@ public class IDAlphaBetaServer {
         }
 
         private void initializeAlgorithms() {
-            System.out.println("Initializing Alpha-Beta algorithms with depth=" + searchDepth + ", timeLimit=" + timeLimit);
+            System.out.println("Initializing Alpha-Beta algorithms with depth=" + searchDepth + ", timeLimit=" + timeLimit / 1000 + "s");
 
-            // Use standard version
             redAlgorithm = new IDAlphaBeta<>(KingAndCourtesanRole.RED, KingAndCourtesanRole.BLUE, KingAndCourtesanHeuristics.hRed, searchDepth, timeLimit);
 
             blueAlgorithm = new IDAlphaBeta<>(KingAndCourtesanRole.BLUE, KingAndCourtesanRole.RED, KingAndCourtesanHeuristics.hBlue, searchDepth, timeLimit);
@@ -343,12 +341,8 @@ public class IDAlphaBetaServer {
                         response.put("depth", searchDepth);
                     }
                     if (command.has("time_limit")) {
-                        timeLimit = command.getLong("time_limit");
-                        response.put("time_limit", timeLimit);
-                    }
-                    if (command.has("use_transposition_table")) {
-                        useTranspositionTable = command.getBoolean("use_transposition_table");
-                        response.put("use_transposition_table", useTranspositionTable);
+                        timeLimit = 1000 * command.getLong("time_limit");
+                        response.put("time_limit", timeLimit / 1000);
                     }
 
                     // Reinitialize algorithms with new parameters
