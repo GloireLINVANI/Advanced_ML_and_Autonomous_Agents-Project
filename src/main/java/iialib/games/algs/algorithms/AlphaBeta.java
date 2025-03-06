@@ -25,13 +25,13 @@ public class AlphaBeta<Move extends IMove, Role extends IRole, Board extends IBo
      */
     private final Role playerMinRole;
     /**
-     * Algorithm max depth
-     */
-    private int depthMax = DEPTH_MAX_DEFAUT;
-    /**
      * Heuristic used by the max player
      */
     private final IHeuristic<Board, Role> h;
+    /**
+     * Algorithm max depth
+     */
+    private int depthMax = DEPTH_MAX_DEFAUT;
 
     public AlphaBeta(Role playerMaxRole, Role playerMinRole, IHeuristic<Board, Role> h) {
         this.playerMaxRole = playerMaxRole;
@@ -50,8 +50,8 @@ public class AlphaBeta<Move extends IMove, Role extends IRole, Board extends IBo
     public Move bestMove(Board board, Role playerRole) {
         ArrayList<Move> coupsPossibles = board.possibleMoves(playerMaxRole);
         Move bestMove = null;
-        int alpha = h.MIN_VALUE;
-        int beta = h.MAX_VALUE;
+        int alpha = IHeuristic.MIN_VALUE;
+        int beta = IHeuristic.MAX_VALUE;
         for (Move move : coupsPossibles) {
             int moveValue = minMax(board.play(move, playerMaxRole), 1, alpha, beta);
             if (moveValue > alpha) {

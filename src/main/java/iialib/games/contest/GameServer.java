@@ -13,12 +13,12 @@ public class GameServer {
 
     public static final int CONNECTION_TIMEOUT = 15; // in seconds
 
-    public static ServerSocket startServer(int portNumber){
-        try{
+    public static ServerSocket startServer(int portNumber) {
+        try {
             ServerSocket serverSocket = new ServerSocket(portNumber);
             serverSocket.setSoTimeout(CONNECTION_TIMEOUT * 1000);
             return serverSocket;
-        }catch (IOException e){
+        } catch (IOException e) {
             System.err.println("[ERROR] Server cannot read port " + portNumber);
             System.exit(2);
         }
@@ -29,7 +29,7 @@ public class GameServer {
         ArgParser parser = ArgParser.parse(args);
         System.out.println(parser.portNumber);
         ServerSocket serverSocket = startServer(parser.portNumber);
-        try{
+        try {
             Socket client_1 = serverSocket.accept();
             String client_1_ID = (new BufferedReader(new InputStreamReader(client_1.getInputStream()))).readLine();
             System.out.println("[REFEREE] Player 1 is " + client_1_ID);
@@ -42,16 +42,16 @@ public class GameServer {
             Thread gameThread = new Thread(new Referee(game, client_1, client_2));
             gameThread.start();
 
-        }catch (SocketTimeoutException e){
-            System.err.println("[ERROR] SOCKET TIMEOUT : waited clients for more than "+CONNECTION_TIMEOUT+" sec.");
+        } catch (SocketTimeoutException e) {
+            System.err.println("[ERROR] SOCKET TIMEOUT : waited clients for more than " + CONNECTION_TIMEOUT + " sec.");
             System.exit(3);
-        }catch (IOException e){
+        } catch (IOException e) {
             System.err.println("[ERROR] " + e);
             System.exit(4);
         }
-        try{
+        try {
             serverSocket.close();
-        }catch (IOException e){
+        } catch (IOException e) {
             System.err.println("[ERROR] Cannot close server :" + e);
             System.exit(5);
         }
@@ -61,7 +61,7 @@ public class GameServer {
         ArgParser parser = ArgParser.parse(args);
         System.out.println(parser.portNumber);
         ServerSocket serverSocket = startServer(parser.portNumber);
-        try{
+        try {
             Socket client_1 = serverSocket.accept();
             String client_1_ID = (new BufferedReader(new InputStreamReader(client_1.getInputStream()))).readLine();
             System.out.println("[REFEREE] Player 1 is " + client_1_ID);
@@ -74,22 +74,22 @@ public class GameServer {
             Thread gameThread = new Thread(new Referee(game, gameView, client_1, client_2, parser.useGraphicApp));
             gameThread.start();
 
-        }catch (SocketTimeoutException e){
-            System.err.println("[ERROR] SOCKET TIMEOUT : waited clients for more than "+CONNECTION_TIMEOUT+" sec.");
+        } catch (SocketTimeoutException e) {
+            System.err.println("[ERROR] SOCKET TIMEOUT : waited clients for more than " + CONNECTION_TIMEOUT + " sec.");
             System.exit(3);
-        }catch (IOException e){
+        } catch (IOException e) {
             System.err.println("[ERROR] " + e);
             System.exit(4);
         }
-        try{
+        try {
             serverSocket.close();
-        }catch (IOException e){
+        } catch (IOException e) {
             System.err.println("[ERROR] Cannot close server :" + e);
             System.exit(5);
         }
     }
 
-    static class ArgParser{
+    static class ArgParser {
         static final String OPT_PORT_NUMBER = "port-number";
         static final String OPT_GRAPHIC_APP = "graphic-app";
         static final String OPT_QUIET = "quiet";
@@ -99,13 +99,13 @@ public class GameServer {
         boolean useGraphicApp = false;
         boolean quiet = false;
 
-        private ArgParser(int portNumber, boolean useGraphicApp, boolean quiet){
+        private ArgParser(int portNumber, boolean useGraphicApp, boolean quiet) {
             this.portNumber = portNumber;
             this.useGraphicApp = useGraphicApp;
             this.quiet = quiet;
         }
 
-        public static Options buildOptions(){
+        public static Options buildOptions() {
             Options options = new Options();
             options.addOption("help", "show this help message");
             options.addOption(Option.builder("p").longOpt(OPT_PORT_NUMBER).required().hasArg().desc("port number used to communicate").build());
@@ -120,34 +120,33 @@ public class GameServer {
             CommandLineParser parser = new DefaultParser();
             try {
                 // parse the command line arguments
-                return parser.parse( options, args );
-            }
-            catch( ParseException e ) {
-                System.err.println( "Parsing failed.  Reason: " + e.getMessage() );
+                return parser.parse(options, args);
+            } catch (ParseException e) {
+                System.err.println("Parsing failed.  Reason: " + e.getMessage());
                 printHelp();
                 System.exit(1);
             }
             return null;
         }
 
-        public static void printHelp(){
+        public static void printHelp() {
             HelpFormatter formatter = new HelpFormatter();
-            formatter.printHelp( "runContest", options );
+            formatter.printHelp("runContest", options);
         }
 
-        public static ArgParser parse(String[] args){
+        public static ArgParser parse(String[] args) {
             CommandLine line = parseArgs(args);
 
-            boolean quiet = line.hasOption( OPT_QUIET );
+            boolean quiet = line.hasOption(OPT_QUIET);
 
-            String portNumberStr = line.getOptionValue( OPT_PORT_NUMBER );
+            String portNumberStr = line.getOptionValue(OPT_PORT_NUMBER);
             int portNumber = Integer.parseInt(portNumberStr);
             if (!quiet)
-                System.out.println("port number is "+portNumber);
+                System.out.println("port number is " + portNumber);
 
-            boolean use_graphic_app = line.hasOption( OPT_GRAPHIC_APP );
+            boolean use_graphic_app = line.hasOption(OPT_GRAPHIC_APP);
             if (!quiet)
-                System.out.println("use_graphic_app is "+use_graphic_app);
+                System.out.println("use_graphic_app is " + use_graphic_app);
 
             return new ArgParser(portNumber, use_graphic_app, quiet);
         }

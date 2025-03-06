@@ -26,13 +26,13 @@ public class MiniMax<Move extends IMove, Role extends IRole, Board extends IBoar
      */
     private final Role playerMinRole;
     /**
+     * Heuristic used by the max player
+     */
+    private final IHeuristic<Board, Role> h;
+    /**
      * Algorithm max depth
      */
     private int depthMax = DEPTH_MAX_DEFAUT;
-    /**
-     * Heuristic used by the max player
-     */
-    private IHeuristic<Board, Role> h;
     /**
      * Number of internal visited (developed) nodes (for stats)
      */
@@ -95,7 +95,7 @@ public class MiniMax<Move extends IMove, Role extends IRole, Board extends IBoar
             return this.h.eval(board, playerMaxRole);
         } else {
             nbNodes++;
-            int Max = h.MIN_VALUE;
+            int Max = IHeuristic.MIN_VALUE;
             ArrayList<Move> coupsPossibles = board.possibleMoves(playerMaxRole);
             for (Move coupsPossible : coupsPossibles) {
                 Max = Math.max(Max, minMax(board.play(coupsPossible, playerMaxRole), profondeur + 1));
@@ -110,7 +110,7 @@ public class MiniMax<Move extends IMove, Role extends IRole, Board extends IBoar
             return this.h.eval(board, playerMaxRole);
         } else {
             nbNodes++;
-            int Min = h.MAX_VALUE;
+            int Min = IHeuristic.MAX_VALUE;
             ArrayList<Move> coupsPossibles = board.possibleMoves(playerMinRole);
             for (Move coupsPossible : coupsPossibles) {
                 Min = Math.min(Min, maxMin(board.play(coupsPossible, playerMinRole), profondeur + 1));

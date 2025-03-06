@@ -5,7 +5,6 @@ import iialib.games.model.IBoard;
 import iialib.games.model.IMove;
 import iialib.games.model.IRole;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Random;
 

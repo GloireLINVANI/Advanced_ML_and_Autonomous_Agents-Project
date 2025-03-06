@@ -144,22 +144,22 @@ public class KingAndCourtesanBoard implements IBoard<KingAndCourtesanMove, KingA
             return true;
 
             // ÉCHANGE
-            } else {
+        } else {
             if (from == SQUARE.RED_KING) {
-                    if (helper == 0) {
-                        return helper2 == -1;
-                    }
-                    if (helper == -1) {
-                        return helper2 == -1 || helper2 == 0;
-                    }
-            } else if (from == SQUARE.BLUE_KING) {
-                    if (helper == 0) {
-                        return helper2 == 1;
-                    }
-                    if (helper == 1) {
-                        return helper2 == 0 || helper2 == 1;
-                    }
+                if (helper == 0) {
+                    return helper2 == -1;
                 }
+                if (helper == -1) {
+                    return helper2 == -1 || helper2 == 0;
+                }
+            } else if (from == SQUARE.BLUE_KING) {
+                if (helper == 0) {
+                    return helper2 == 1;
+                }
+                if (helper == 1) {
+                    return helper2 == 0 || helper2 == 1;
+                }
+            }
         }
         return false;
 
@@ -260,9 +260,9 @@ public class KingAndCourtesanBoard implements IBoard<KingAndCourtesanMove, KingA
                 res.boardGrid[toLig][toCol] = from;
                 res.boardGrid[fromLig][fromCol] = SQUARE.EMPTY;
 
-                if(from == SQUARE.RED_KING) {
+                if (from == SQUARE.RED_KING) {
                     res.redKingPosition = new Point(toLig, toCol);
-                }else if(from == SQUARE.BLUE_KING) {
+                } else if (from == SQUARE.BLUE_KING) {
                     res.blueKingPosition = new Point(toLig, toCol);
                 }
 
@@ -283,9 +283,9 @@ public class KingAndCourtesanBoard implements IBoard<KingAndCourtesanMove, KingA
         } else {
             res.boardGrid[toLig][toCol] = from;
             res.boardGrid[fromLig][fromCol] = SQUARE.EMPTY;
-            if (from == SQUARE.RED_KING){
+            if (from == SQUARE.RED_KING) {
                 res.redKingPosition = new Point(toLig, toCol);
-            } else if (from == SQUARE.BLUE_KING){
+            } else if (from == SQUARE.BLUE_KING) {
                 res.blueKingPosition = new Point(toLig, toCol);
             }
         }
@@ -296,9 +296,10 @@ public class KingAndCourtesanBoard implements IBoard<KingAndCourtesanMove, KingA
 
     public String toString() {
         StringBuilder res = new StringBuilder();
-        res.append(" 012345\n");
+        res.append("  012345\n");
         for (int i = this.boardSize - 1; i >= 0; i--) {
             res.append((char) ('A' + i));
+            res.append(" ");
             for (int j = 0; j < this.boardSize; j++) {
                 if (boardGrid[i][j] == SQUARE.BLUE_COURTESAN || boardGrid[i][j] == SQUARE.BLUE_KING) {
                     res.append("B");
@@ -311,26 +312,22 @@ public class KingAndCourtesanBoard implements IBoard<KingAndCourtesanMove, KingA
             res.append("\n");
         }
         if (blueKingPosition != null) {
+            res.setCharAt((3 + this.boardSize) * (this.boardSize - blueKingPosition.x) + blueKingPosition.y + 2, 'Q');
             res.append("BLUE KING Position: (").append(blueKingPosition.x).append(",").append(blueKingPosition.y).append(")\n");
         }
         if (redKingPosition != null) {
+            res.setCharAt((3 + this.boardSize) * (this.boardSize - redKingPosition.x) + redKingPosition.y + 2, 'K');
             res.append("RED KING Position: (").append(redKingPosition.x).append(",").append(redKingPosition.y).append(")");
         }
         return res.toString();
     }
 
     public boolean redWins() {
-        return (this.hasRedKing && !this.hasBlueKing) ||
-                (this.boardGrid[this.boardSize - 1][this.boardSize - 1] == SQUARE.RED_KING);
+        return (this.hasRedKing && !this.hasBlueKing) || (this.boardGrid[this.boardSize - 1][this.boardSize - 1] == SQUARE.RED_KING);
     }
 
     public boolean blueWins() {
-        return (this.hasBlueKing && !this.hasRedKing) ||
-                (this.boardGrid[0][0] == SQUARE.BLUE_KING);
-    }
-
-    public enum SQUARE {
-        RED_KING, BLUE_KING, BLUE_COURTESAN, RED_COURTESAN, EMPTY
+        return (this.hasBlueKing && !this.hasRedKing) || (this.boardGrid[0][0] == SQUARE.BLUE_KING);
     }
 
     public SQUARE[][] getBoardGrid() {
@@ -347,6 +344,10 @@ public class KingAndCourtesanBoard implements IBoard<KingAndCourtesanMove, KingA
 
     public Point getBlueKingPosition() {
         return blueKingPosition;
+    }
+
+    public enum SQUARE {
+        RED_KING, BLUE_KING, BLUE_COURTESAN, RED_COURTESAN, EMPTY
     }
 
    /* @Override

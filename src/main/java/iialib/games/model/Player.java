@@ -49,7 +49,7 @@ public class Player<Role extends IRole> {
 
     // ----------- Other Methods ------------
     public String toString() {
-        return "" + role + (id.isEmpty() ? "" : " (" + id + ")");
+        return role + (id.isEmpty() ? "" : " (" + id + ")");
     }
 
 

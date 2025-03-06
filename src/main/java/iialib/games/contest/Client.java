@@ -15,16 +15,16 @@ public class Client {
         ArgParser parser = ArgParser.parse(args);
         ChallengerSpeaker playerSpeacker = getSpeaker(parser.serverName, parser.portNumber);
 
-        System.out.println("[CLIENT] Loading player class "+ parser.className);
+        System.out.println("[CLIENT] Loading player class " + parser.className);
         IChallenger player = getChallenger(parser.className);
 
-        System.out.println("[CLIENT] Send team name ("+player.teamName()+") to server.");
+        System.out.println("[CLIENT] Send team name (" + player.teamName() + ") to server.");
         playerSpeacker.sendMessage(player.teamName());
         boolean isNotOver = true;
         try {
-            while (isNotOver){
+            while (isNotOver) {
                 Message msg = new Message(playerSpeacker.getMessage());
-                switch (msg.type){
+                switch (msg.type) {
                     case ROLE:
                         player.setRole(msg.msg);
                         break;
@@ -58,36 +58,36 @@ public class Client {
                 }
             }
 
-        }catch (IOException e){
+        } catch (IOException e) {
             System.err.println(e);
         }
 
     }
 
 
-    static ChallengerSpeaker getSpeaker(String serverName, int portNumber){
-        try{
+    static ChallengerSpeaker getSpeaker(String serverName, int portNumber) {
+        try {
             return new ChallengerSpeaker(new Socket(serverName, portNumber));
-        }catch (IOException e){
-            System.out.println("[ERROR] Cannot read "+serverName+" on port "+ portNumber);
+        } catch (IOException e) {
+            System.out.println("[ERROR] Cannot read " + serverName + " on port " + portNumber);
             System.out.println(e);
             System.exit(1);
         }
         return null;
     }
 
-    static IChallenger getChallenger(String className){
+    static IChallenger getChallenger(String className) {
         Class<?> playerClass = null;
-        try{
+        try {
             playerClass = Class.forName(className);
-        }catch (ClassNotFoundException e){
+        } catch (ClassNotFoundException e) {
             System.err.println(e);
             System.exit(2);
         }
-        try{
+        try {
             return (IChallenger) playerClass.newInstance();
-        }catch (InstantiationException | IllegalAccessException e){
-            System.err.println("[ERROR] cannot instanciate "+ playerClass);
+        } catch (InstantiationException | IllegalAccessException e) {
+            System.err.println("[ERROR] cannot instanciate " + playerClass);
             System.err.println(e);
             System.exit(3);
         }
@@ -95,7 +95,7 @@ public class Client {
     }
 
 
-    static class ArgParser{
+    static class ArgParser {
         static final String OPT_PORT_NUMBER = "port-number";
         static final String OPT_PLAYER_CLASS = "class";
         static final String OPT_SERVER_NAME = "server-name";
@@ -107,14 +107,14 @@ public class Client {
         String serverName;
         boolean quiet = false;
 
-        private ArgParser(int portNumber, String className, String serverName, boolean quiet){
+        private ArgParser(int portNumber, String className, String serverName, boolean quiet) {
             this.portNumber = portNumber;
             this.className = className;
             this.serverName = serverName;
             this.quiet = quiet;
         }
 
-        public static Options buildOptions(){
+        public static Options buildOptions() {
             Options options = new Options();
             options.addOption("help", "show this help message");
             options.addOption(Option.builder("p").longOpt(OPT_PORT_NUMBER).required().hasArg().desc("port number used to communicate").build());
@@ -130,39 +130,38 @@ public class Client {
             CommandLineParser parser = new DefaultParser();
             try {
                 // parse the command line arguments
-                return parser.parse( options, args );
-            }
-            catch( ParseException e ) {
-                System.err.println( "Parsing failed.  Reason: " + e.getMessage() );
+                return parser.parse(options, args);
+            } catch (ParseException e) {
+                System.err.println("Parsing failed.  Reason: " + e.getMessage());
                 printHelp();
                 System.exit(1);
             }
             return null;
         }
 
-        public static void printHelp(){
+        public static void printHelp() {
             HelpFormatter formatter = new HelpFormatter();
-            formatter.printHelp( "runClient", options );
+            formatter.printHelp("runClient", options);
         }
 
-        public static ArgParser parse(String[] args){
+        public static ArgParser parse(String[] args) {
             CommandLine line = parseArgs(args);
 
-            boolean quiet = line.hasOption( OPT_QUIET );
+            boolean quiet = line.hasOption(OPT_QUIET);
 
-            String portNumberStr = line.getOptionValue( OPT_PORT_NUMBER );
+            String portNumberStr = line.getOptionValue(OPT_PORT_NUMBER);
             int portNumber = Integer.parseInt(portNumberStr);
             if (!quiet)
-                System.out.println("port number is "+portNumber);
+                System.out.println("port number is " + portNumber);
 
-            String className = line.getOptionValue( OPT_PLAYER_CLASS );
+            String className = line.getOptionValue(OPT_PLAYER_CLASS);
             if (!quiet) {
-                System.out.println("className is "+className);
+                System.out.println("className is " + className);
             }
 
-            String serverName = line.getOptionValue( OPT_SERVER_NAME );
+            String serverName = line.getOptionValue(OPT_SERVER_NAME);
             if (!quiet) {
-                System.out.println("serverName is "+serverName);
+                System.out.println("serverName is " + serverName);
             }
 
             return new Client.ArgParser(portNumber, className, serverName, quiet);
@@ -172,7 +171,7 @@ public class Client {
 
 }
 
-class ChallengerSpeaker{
+class ChallengerSpeaker {
     public Socket socket;
     public PrintWriter out;
     public BufferedReader in;
@@ -189,7 +188,7 @@ class ChallengerSpeaker{
         return in.readLine();
     }
 
-    void sendMessage(String msg){
+    void sendMessage(String msg) {
         out.println(msg);
     }
 

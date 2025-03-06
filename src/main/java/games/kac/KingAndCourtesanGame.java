@@ -3,7 +3,6 @@ package games.kac;
 import iialib.games.algs.AIPlayer;
 import iialib.games.algs.AbstractGame;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class KingAndCourtesanGame extends AbstractGame<KingAndCourtesanMove, KingAndCourtesanRole, KingAndCourtesanBoard> {

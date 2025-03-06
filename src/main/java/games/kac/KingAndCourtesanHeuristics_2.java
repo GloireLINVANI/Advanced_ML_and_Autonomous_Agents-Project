@@ -19,7 +19,7 @@ public class KingAndCourtesanHeuristics_2 {
     public static IHeuristic<KingAndCourtesanBoard, KingAndCourtesanRole> hBlue = (board, role) -> eval(board, KingAndCourtesanRole.BLUE);
 
     public static int eval(KingAndCourtesanBoard board, KingAndCourtesanRole role) {
-       // System.out.println(board);
+        // System.out.println(board);
         // Number of pieces of each color
         int piecesRed = 0;
         int piecesBlue = 0;
@@ -49,7 +49,6 @@ public class KingAndCourtesanHeuristics_2 {
         // Wether we're on a winning board or not
         boolean redWin = board.redWins();
         boolean blueWin = board.blueWins();
-
 
 
         if (!redWin && !blueWin) {
@@ -133,11 +132,11 @@ public class KingAndCourtesanHeuristics_2 {
 
             }
             meanDistRedKing = (double) sumDistRedKing / piecesBlue;
-            if(meanDistRedKing < 1) {
+            if (meanDistRedKing < 1) {
                 meanDistRedKing = 1;
             }
             meanDistBlueKing = (double) sumDistBlueKing / piecesRed;
-            if(meanDistBlueKing < 1) {
+            if (meanDistBlueKing < 1) {
                 meanDistBlueKing = 1;
             }
             closeToRedKingBase = distRedKingBase == 1;
@@ -163,8 +162,8 @@ public class KingAndCourtesanHeuristics_2 {
                 king_base_progress = (closeToBlueKingBase ? H_CLOSE_TO_VICTORY : 0);
                 opponent_king_capture_progress = (closeToBlueKing ? H_CLOSE_TO_VICTORY : 0);
                 return diff_pieces + diff_possible_moves + diff_potential_capture + king_base_progress + opponent_king_capture_progress -
-                        (H_DIST_KING /(int) meanDistRedKing) + (H_DIST_KING /(int) meanDistBlueKing) - (H_DIST_KING /distRedKingBase)
-                        + (H_DIST_KING /distBlueKingBase);
+                        (H_DIST_KING / (int) meanDistRedKing) + (H_DIST_KING / (int) meanDistBlueKing) - (H_DIST_KING / distRedKingBase)
+                        + (H_DIST_KING / distBlueKingBase);
             } else {
                 if (closeToBlueKing || closeToBlueKingBase) {
                     if (closeToRedKing || closeToRedKingBase) {
@@ -179,11 +178,11 @@ public class KingAndCourtesanHeuristics_2 {
                 king_base_progress = (closeToRedKingBase ? H_CLOSE_TO_VICTORY : 0);
                 opponent_king_capture_progress = (closeToRedKing ? H_CLOSE_TO_VICTORY : 0);
                 return diff_pieces + diff_possible_moves + diff_potential_capture + king_base_progress + opponent_king_capture_progress -
-                        (H_DIST_KING /(int) meanDistBlueKing) + (H_DIST_KING /(int) meanDistRedKing) - (H_DIST_KING /distBlueKingBase)
-                        + (H_DIST_KING /distRedKingBase);
+                        (H_DIST_KING / (int) meanDistBlueKing) + (H_DIST_KING / (int) meanDistRedKing) - (H_DIST_KING / distBlueKingBase)
+                        + (H_DIST_KING / distRedKingBase);
             }
-        }else {
-            if(role == KingAndCourtesanRole.RED) {
+        } else {
+            if (role == KingAndCourtesanRole.RED) {
                 return redWin ? H_WIN : -H_WIN;
             } else {
                 return blueWin ? H_WIN : -H_WIN;
@@ -199,9 +198,9 @@ public class KingAndCourtesanHeuristics_2 {
 
 
     private static boolean opponentPiece(KingAndCourtesanRole role, KingAndCourtesanBoard.SQUARE square) {
-        if(role == KingAndCourtesanRole.RED) {
+        if (role == KingAndCourtesanRole.RED) {
             return square == KingAndCourtesanBoard.SQUARE.BLUE_KING || square == KingAndCourtesanBoard.SQUARE.BLUE_COURTESAN;
-        }else {
+        } else {
             return square == KingAndCourtesanBoard.SQUARE.RED_KING || square == KingAndCourtesanBoard.SQUARE.RED_COURTESAN;
         }
     }

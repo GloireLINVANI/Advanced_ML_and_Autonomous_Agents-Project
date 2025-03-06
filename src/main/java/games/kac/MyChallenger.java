@@ -27,12 +27,12 @@ public class MyChallenger implements IChallenger {
         if (role.equals("RED")) {
             this.role = KingAndCourtesanRole.RED;
             this.ai = new IDAlphaBeta<>(this.role, KingAndCourtesanRole.BLUE, KingAndCourtesanHeuristics.hRed, 8);
-           // this.ai = new TransPositionTableIDAlphaBeta<>(this.role, KingAndCourtesanRole.BLUE, KingAndCourtesanHeuristics.hRed, 6);
+            // this.ai = new TransPositionTableIDAlphaBeta<>(this.role, KingAndCourtesanRole.BLUE, KingAndCourtesanHeuristics.hRed, 6);
             //this.ai = new RandomChoice<>(this.role);
         } else {
             this.role = KingAndCourtesanRole.BLUE;
-             this.ai = new IDAlphaBeta<>(this.role, KingAndCourtesanRole.RED, KingAndCourtesanHeuristics.hBlue, 8);
-           // this.ai = new TransPositionTableIDAlphaBeta<>(this.role, KingAndCourtesanRole.RED, KingAndCourtesanHeuristics.hBlue, 6);
+            this.ai = new IDAlphaBeta<>(this.role, KingAndCourtesanRole.RED, KingAndCourtesanHeuristics.hBlue, 8);
+            // this.ai = new TransPositionTableIDAlphaBeta<>(this.role, KingAndCourtesanRole.RED, KingAndCourtesanHeuristics.hBlue, 6);
             //this.ai = new RandomChoice<>(this.role);
         }
         this.board = new KingAndCourtesanBoard();

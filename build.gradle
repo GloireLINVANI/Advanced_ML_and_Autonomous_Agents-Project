@@ -29,11 +29,13 @@ dependencies {
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     //implementation 'com.google.guava:guava:28.2-jre'
-    
+
     // This dependency is exported to consumers, that is to say found on their compile classpath.
     api 'commons-cli:commons-cli:1.4'
 
+    implementation 'org.json:json:20250107'
+
     // Use JUnit test framework
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13.1'
 }
 

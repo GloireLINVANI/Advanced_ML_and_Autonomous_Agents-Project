@@ -179,8 +179,8 @@ public class TransPositionTableIDAlphaBeta<Move extends IMove, Role extends IRol
         boards.sort((b1, b2) -> {
             AbstractMap.SimpleEntry<Integer, Integer> key1 = new AbstractMap.SimpleEntry<>(b1.hashCode(), playerRole == playerMaxRole ? playerMinRoleHashCode : playerMaxRoleHashCode);
             AbstractMap.SimpleEntry<Integer, Integer> key2 = new AbstractMap.SimpleEntry<>(b2.hashCode(), playerRole == playerMaxRole ? playerMinRoleHashCode : playerMaxRoleHashCode);
-            int v1 = transpositionTable.getOrDefault(key1, new AbstractMap.SimpleEntry<>(0, playerRole == playerMaxRole ? h.MIN_VALUE : h.MAX_VALUE)).getValue();
-            int v2 = transpositionTable.getOrDefault(key2, new AbstractMap.SimpleEntry<>(0, playerRole == playerMaxRole ? h.MIN_VALUE : h.MAX_VALUE)).getValue();
+            int v1 = transpositionTable.getOrDefault(key1, new AbstractMap.SimpleEntry<>(0, playerRole == playerMaxRole ? IHeuristic.MIN_VALUE : IHeuristic.MAX_VALUE)).getValue();
+            int v2 = transpositionTable.getOrDefault(key2, new AbstractMap.SimpleEntry<>(0, playerRole == playerMaxRole ? IHeuristic.MIN_VALUE : IHeuristic.MAX_VALUE)).getValue();
             return playerRole == playerMaxRole ? Integer.compare(v2, v1) : Integer.compare(v1, v2);
         });
     }
@@ -189,8 +189,8 @@ public class TransPositionTableIDAlphaBeta<Move extends IMove, Role extends IRol
         boards.sort((b1, b2) -> {
             AbstractMap.SimpleEntry<Integer, Integer> key1 = new AbstractMap.SimpleEntry<>(b1.getKey().hashCode(), playerRole == playerMaxRole ? playerMinRoleHashCode : playerMaxRoleHashCode);
             AbstractMap.SimpleEntry<Integer, Integer> key2 = new AbstractMap.SimpleEntry<>(b2.getKey().hashCode(), playerRole == playerMaxRole ? playerMinRoleHashCode : playerMaxRoleHashCode);
-            int v1 = transpositionTable.getOrDefault(key1, new AbstractMap.SimpleEntry<>(0, playerRole == playerMaxRole ? h.MIN_VALUE : h.MAX_VALUE)).getValue();
-            int v2 = transpositionTable.getOrDefault(key2, new AbstractMap.SimpleEntry<>(0, playerRole == playerMaxRole ? h.MIN_VALUE : h.MAX_VALUE)).getValue();
+            int v1 = transpositionTable.getOrDefault(key1, new AbstractMap.SimpleEntry<>(0, playerRole == playerMaxRole ? IHeuristic.MIN_VALUE : IHeuristic.MAX_VALUE)).getValue();
+            int v2 = transpositionTable.getOrDefault(key2, new AbstractMap.SimpleEntry<>(0, playerRole == playerMaxRole ? IHeuristic.MIN_VALUE : IHeuristic.MAX_VALUE)).getValue();
             return playerRole == playerMaxRole ? Integer.compare(v2, v1) : Integer.compare(v1, v2);
         });
     }

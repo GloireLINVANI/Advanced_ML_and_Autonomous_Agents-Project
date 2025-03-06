@@ -5,7 +5,6 @@ import iialib.games.model.IMove;
 import iialib.games.model.IRole;
 import iialib.games.model.Score;
 
-import java.sql.Time;
 import java.util.ArrayList;
 
 public abstract class AbstractGame<Move extends IMove, Role extends IRole, Board extends IBoard<Move, Role, Board>> {
@@ -53,8 +52,7 @@ public abstract class AbstractGame<Move extends IMove, Role extends IRole, Board
         for (AIPlayer<Move, Role, Board> p : players)
             for (Score<Role> s : scores)
                 if (p.getRole() == s.getRole())
-                    System.out.println("" + p + " score is : " + s.getStatus() + " " + s.getScore());
-        ;
+                    System.out.println(p + " score is : " + s.getStatus() + " " + s.getScore());
 
     }
 

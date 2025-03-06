@@ -1,9 +1,7 @@
 package games.kac;
 
 import iialib.games.algs.GameAlgorithm;
-import iialib.games.algs.algorithms.AlphaBeta;
 import iialib.games.algs.algorithms.IDAlphaBeta;
-import iialib.games.algs.algorithms.TransPositionTableIDAlphaBeta;
 import iialib.games.model.IChallenger;
 
 import java.io.BufferedReader;
@@ -28,16 +26,16 @@ public class MyBenchMarkChallenger implements IChallenger {
     public void setRole(String role) {
         if (role.equals("RED")) {
             this.role = KingAndCourtesanRole.RED;
-          //  this.ai = new TransPositionTableIDAlphaBeta<>(this.role, KingAndCourtesanRole.BLUE, KingAndCourtesanHeuristics.hRed, 6);
+            //  this.ai = new TransPositionTableIDAlphaBeta<>(this.role, KingAndCourtesanRole.BLUE, KingAndCourtesanHeuristics.hRed, 6);
             this.ai = new IDAlphaBeta<>(this.role, KingAndCourtesanRole.BLUE, KingAndCourtesanHeuristics_2.hRed, 8);
-           // this.ai = new AlphaBeta<>(this.role, KingAndCourtesanRole.BLUE, KingAndCourtesanHeuristics_2.hRed, 6);
+            // this.ai = new AlphaBeta<>(this.role, KingAndCourtesanRole.BLUE, KingAndCourtesanHeuristics_2.hRed, 6);
             //this.ai = new RandomChoice<>(this.role);
         } else {
             this.role = KingAndCourtesanRole.BLUE;
-           // this.ai = new TransPositionTableIDAlphaBeta<>(this.role, KingAndCourtesanRole.RED, KingAndCourtesanHeuristics.hBlue, 6);
-              this.ai = new IDAlphaBeta<>(this.role, KingAndCourtesanRole.RED, KingAndCourtesanHeuristics_2.hBlue, 8);
-          //  this.ai = new AlphaBeta<>(this.role, KingAndCourtesanRole.RED, KingAndCourtesanHeuristics_2.hBlue, 6);
-           // this.ai = new RandomChoice<>(this.role);
+            // this.ai = new TransPositionTableIDAlphaBeta<>(this.role, KingAndCourtesanRole.RED, KingAndCourtesanHeuristics.hBlue, 6);
+            this.ai = new IDAlphaBeta<>(this.role, KingAndCourtesanRole.RED, KingAndCourtesanHeuristics_2.hBlue, 8);
+            //  this.ai = new AlphaBeta<>(this.role, KingAndCourtesanRole.RED, KingAndCourtesanHeuristics_2.hBlue, 6);
+            // this.ai = new RandomChoice<>(this.role);
         }
         this.board = new KingAndCourtesanBoard();
     }

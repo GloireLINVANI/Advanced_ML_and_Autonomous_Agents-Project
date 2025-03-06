@@ -19,6 +19,10 @@ public class IDAlphaBeta<Move extends IMove, Role extends IRole, Board extends I
 
     // Attributes
     /**
+     * Time limit for iterative deepening in milliseconds
+     */
+    private static final long DEFAULT_TIME_LIMIT = 30000;
+    /**
      * Role of the max player
      */
     private final Role playerMaxRole;
@@ -27,17 +31,13 @@ public class IDAlphaBeta<Move extends IMove, Role extends IRole, Board extends I
      */
     private final Role playerMinRole;
     /**
-     * Algorithm max depth
-     */
-    private int depthMax = DEPTH_MAX_DEFAUT;
-    /**
-     * Time limit for iterative deepening in milliseconds
-     */
-    private static final long DEFAULT_TIME_LIMIT = 30000;
-    /**
      * Heuristic used by the max player
      */
     private final IHeuristic<Board, Role> h;
+    /**
+     * Algorithm max depth
+     */
+    private int depthMax = DEPTH_MAX_DEFAUT;
     private long timeLimit = DEFAULT_TIME_LIMIT; // time limit for iterative deepening in milliseconds
     private boolean timeOut; // true if the time limit is reached
     private long startTime; // start time of the algorithm thinking in milliseconds
@@ -102,7 +102,7 @@ public class IDAlphaBeta<Move extends IMove, Role extends IRole, Board extends I
 
     // --------- PRIVATE METHODS ---------
     private int maxMin(Board board, int maxDepth, int profondeur, int alpha, int beta) {
-        if (System.currentTimeMillis() - startTime >= timeLimit) {
+        if (System.currentTimeMillis() - startTime >= this.timeLimit) {
             timeOut = true;
             return alpha;
         }

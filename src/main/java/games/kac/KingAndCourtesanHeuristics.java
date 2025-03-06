@@ -5,7 +5,7 @@ import iialib.games.algs.IHeuristic;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 
-public class KingAndCourtesanHeuristics  {
+public class KingAndCourtesanHeuristics {
 
     private static final int H_PIECES_DIFF = 40;
     private static final int H_POSSIBLE_MOVES_DIFF = 10;
@@ -19,7 +19,7 @@ public class KingAndCourtesanHeuristics  {
     public static IHeuristic<KingAndCourtesanBoard, KingAndCourtesanRole> hBlue = (board, role) -> eval(board, KingAndCourtesanRole.BLUE);
 
     public static int eval(KingAndCourtesanBoard board, KingAndCourtesanRole role) {
-       // System.out.println(board);
+        // System.out.println(board);
         // Number of pieces of each color
         int piecesRed = 0;
         int piecesBlue = 0;
@@ -131,11 +131,11 @@ public class KingAndCourtesanHeuristics  {
 
             }
             meanDistRedKing = (double) sumDistRedKing / piecesBlue;
-            if(meanDistRedKing < 1) {
+            if (meanDistRedKing < 1) {
                 meanDistRedKing = 1;
             }
             meanDistBlueKing = (double) sumDistBlueKing / piecesRed;
-            if(meanDistBlueKing < 1) {
+            if (meanDistBlueKing < 1) {
                 meanDistBlueKing = 1;
             }
             closeToRedKingBase = distRedKingBase == 1;
@@ -157,8 +157,8 @@ public class KingAndCourtesanHeuristics  {
                 opponent_king_capture_progress = (closeToBlueKing ? H_CLOSE_TO_VICTORY : 0);
                 king_base_safety = (closeToRedKingBase ? -H_CLOSE_TO_VICTORY : 300);
                 king_safety = (closeToRedKing ? -H_CLOSE_TO_VICTORY : 300);
-                return diff_pieces + diff_possible_moves + diff_potential_capture - (H_DIST_KING /(int) meanDistRedKing) +
-                        (H_DIST_KING /(int) meanDistBlueKing) - (H_DIST_KING /distRedKingBase) + (H_DIST_KING /distBlueKingBase) +
+                return diff_pieces + diff_possible_moves + diff_potential_capture - (H_DIST_KING / (int) meanDistRedKing) +
+                        (H_DIST_KING / (int) meanDistBlueKing) - (H_DIST_KING / distRedKingBase) + (H_DIST_KING / distBlueKingBase) +
                         king_base_progress + opponent_king_capture_progress + king_base_safety + king_safety;
             } else {
                 diff_pieces = H_PIECES_DIFF * (piecesBlue - piecesRed);
@@ -168,13 +168,13 @@ public class KingAndCourtesanHeuristics  {
                 opponent_king_capture_progress = (closeToRedKing ? H_CLOSE_TO_VICTORY : 0);
                 king_base_safety = (closeToBlueKingBase ? -H_CLOSE_TO_VICTORY : 300);
                 king_safety = (closeToBlueKing ? -H_CLOSE_TO_VICTORY : 300);
-                return diff_pieces + diff_possible_moves + diff_potential_capture - (H_DIST_KING /(int) meanDistBlueKing) +
-                         (H_DIST_KING /(int) meanDistRedKing) - (H_DIST_KING /distBlueKingBase) + (H_DIST_KING /distRedKingBase) +
+                return diff_pieces + diff_possible_moves + diff_potential_capture - (H_DIST_KING / (int) meanDistBlueKing) +
+                        (H_DIST_KING / (int) meanDistRedKing) - (H_DIST_KING / distBlueKingBase) + (H_DIST_KING / distRedKingBase) +
                         king_base_progress + opponent_king_capture_progress + king_base_safety + king_safety;
 
             }
-        }else {
-            if(role == KingAndCourtesanRole.RED) {
+        } else {
+            if (role == KingAndCourtesanRole.RED) {
                 return redWin ? H_WIN : -H_WIN;
             } else {
                 return blueWin ? H_WIN : -H_WIN;
@@ -190,9 +190,9 @@ public class KingAndCourtesanHeuristics  {
 
 
     private static boolean opponentPiece(KingAndCourtesanRole role, KingAndCourtesanBoard.SQUARE square) {
-        if(role == KingAndCourtesanRole.RED) {
+        if (role == KingAndCourtesanRole.RED) {
             return square == KingAndCourtesanBoard.SQUARE.BLUE_KING || square == KingAndCourtesanBoard.SQUARE.BLUE_COURTESAN;
-        }else {
+        } else {
             return square == KingAndCourtesanBoard.SQUARE.RED_KING || square == KingAndCourtesanBoard.SQUARE.RED_COURTESAN;
         }
     }

@@ -8,19 +8,17 @@ public class Score<Role extends IRole> {
     /**
      *
      */
-    private Role role;
-
-    ;
+    private final Role role;
 
     // ----------- Attributes ------------
     /**
      *
      */
-    private Status status;
+    private final Status status;
     /**
      * score can be just 1/0 or a real score depending on the game
      */
-    private int score;
+    private final int score;
 
     public Score(Role role, Status status, int score) {
         super();
