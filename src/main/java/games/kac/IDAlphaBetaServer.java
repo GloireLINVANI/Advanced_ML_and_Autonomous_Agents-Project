@@ -52,7 +52,7 @@ public class IDAlphaBetaServer {
         if (cmd.hasOption('t')) {
             try {
                 timeLimit = 1000 * Long.parseLong(cmd.getOptionValue('t'));
-               // System.out.println("Using time limit: " + timeLimit/1000 + "s");
+                // System.out.println("Using time limit: " + timeLimit/1000 + "s");
             } catch (NumberFormatException e) {
                 System.err.println("Invalid time limit, using default: " + timeLimit / 1000 + "s");
             }
@@ -61,7 +61,7 @@ public class IDAlphaBetaServer {
 
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             System.out.println("ID Alpha-Beta server started on port " + port);
-            System.out.println("Configuration: depth=" + searchDepth + ", timeLimit=" + timeLimit/1000 + "s");
+            System.out.println("Configuration: depth=" + searchDepth + ", timeLimit=" + timeLimit / 1000 + "s");
 
             // Main server loop - accept and handle client connections
             while (true) {
@@ -352,6 +352,9 @@ public class IDAlphaBetaServer {
 
                 case "CLOSE":
                     response.put("status", "closed");
+                    // Clear the console screen
+                    System.out.print("\033[H\033[2J");  // ANSI escape codes: move cursor to home position, clear screen
+                    System.out.flush();  // Flush the output stream after clearing
                     break;
 
                 default:

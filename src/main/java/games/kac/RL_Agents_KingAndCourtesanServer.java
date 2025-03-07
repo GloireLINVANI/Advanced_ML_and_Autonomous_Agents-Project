@@ -453,6 +453,9 @@ public class RL_Agents_KingAndCourtesanServer {
                 case "CLOSE":
                     response.put("status", "closed");
                     logger.info("Client " + clientId + ": Close requested");
+                    // Clear the console screen
+                    System.out.print("\033[H\033[2J");  // ANSI escape codes: move cursor to home position, clear screen
+                    System.out.flush();  // Flush the output stream after clearing
                     break;
 
                 case "INFO":
