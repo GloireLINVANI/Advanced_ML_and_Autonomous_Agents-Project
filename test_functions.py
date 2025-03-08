@@ -474,7 +474,7 @@ def test_q_network_vs_alpha_beta(env_host='localhost', env_port=42, agent_host='
                                  q_network=None, board_size=6, render_mode='human', response_timeout=50, num_episodes=1,
                                  delay_between_moves=1.0, max_steps=50, first_player_q_network=None,
                                  # None for random, True for Q-Network first, False for Alpha-Beta first
-                                 verbose=True):
+                                 verbose=True, agent=''):
     """
     Test a Q-Network agent against an ID Alpha-Beta agent in the King and Courtesan game.
 
@@ -506,6 +506,8 @@ def test_q_network_vs_alpha_beta(env_host='localhost', env_port=42, agent_host='
         Whether Q-Network plays first (True), Alpha-Beta plays first (False), or random assignment (None)
     verbose : bool
         Whether to print detailed game progress
+    agent : str
+        The agent to play against
 
     Returns:
     --------
@@ -520,7 +522,7 @@ def test_q_network_vs_alpha_beta(env_host='localhost', env_port=42, agent_host='
 
     # Initialize Alpha-Beta agent
     id_alpha_beta_agent = id_ab_client.IDAlphaBetaAgent(env=env, host=agent_host, port=agent_port,
-                                                        timeout=response_timeout)
+                                                        timeout=response_timeout, agent=agent)
 
     try:
         for episode in range(num_episodes):
@@ -931,7 +933,7 @@ def test_policy_network_vs_alpha_beta(env_host='localhost', env_port=42, agent_h
                                       num_episodes=1, delay_between_moves=1.0, max_steps=50,
                                       first_player_policy_network=None,
                                       # None for random, True for Policy Network first, False for Alpha-Beta first
-                                      verbose=True):
+                                      verbose=True, agent=''):
     """
     Test a Policy Network agent against an ID Alpha-Beta agent in the King and Courtesan game.
 
@@ -963,6 +965,8 @@ def test_policy_network_vs_alpha_beta(env_host='localhost', env_port=42, agent_h
         Whether Policy Network plays first (True), Alpha-Beta plays first (False), or random assignment (None)
     verbose : bool
         Whether to print detailed game progress
+    agent : str
+        The agent to test against
 
     Returns:
     --------
@@ -977,7 +981,7 @@ def test_policy_network_vs_alpha_beta(env_host='localhost', env_port=42, agent_h
 
     # Initialize Alpha-Beta agent
     id_alpha_beta_agent = id_ab_client.IDAlphaBetaAgent(env=env, host=agent_host, port=agent_port,
-                                                        timeout=response_timeout)
+                                                        timeout=response_timeout, agent=agent)
 
     try:
         for episode in range(num_episodes):

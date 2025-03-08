@@ -9,7 +9,7 @@ class IDAlphaBetaAgent:
     Communicates with a Java server running the algorithm.
     """
 
-    def __init__(self, env, host='localhost', port=5001, timeout=40, max_retries=3):
+    def __init__(self, env, host='localhost', port=5001, timeout=40, max_retries=3, agent='', max_depth=8):
         """
         Initialize the ID Alpha-Beta agent.
 
@@ -36,11 +36,20 @@ class IDAlphaBetaAgent:
         # Only try to reset if connected successfully
         if self.connected:
             try:
-                response = self._send_command(
-                    {"command": "RESET_ID_ALPHA_BETA", "is_first_player": env.is_first_player})
-                print(f"ID Alpha-Beta reset response: {response}")
+                if not agent:
+                    print("ID AlphaBeta reset")
+                elif agent == 'Alpha-Beta':
+                    print(f"Alpha-Beta reset")
+                else:
+                    raise ValueError(f"Invalid agent type: {agent}")
+                response = self._send_command({"command": "RESET_ID_ALPHA_BETA", "is_first_player": env.is_first_player})
+                agent = agent if agent else 'ID Alpha-Beta'
+                print(f"{agent} reset response: {response}")
+                response = self._send_command({"command": "SET_PARAMETERS", "agent_type": agent, 'max_depth': max_depth})
+                print(f"Set parameters response: {response}")
+
             except Exception as e:
-                print(f"Warning: Could not initialize ID Alpha-Beta server: {e}")
+                print(f"Warning: Could not initialize ID Alpha-Beta or Alpha Beta server: {e}")
                 print("Will fallback to sampling legal moves when needed")
 
     def connect(self):
@@ -67,7 +76,7 @@ class IDAlphaBetaAgent:
 
     def select_action(self, state, env):
         """
-        Select the best action for the current state using ID Alpha-Beta.
+        Select the best action for the current state using ID Alpha-Beta or Alpha-Beta.
 
         Parameters:
         -----------
