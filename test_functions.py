@@ -993,6 +993,12 @@ def test_policy_network_vs_alpha_beta(env_host='localhost', env_port=42, agent_h
 
             # Reset environment with specified first player
             observation, info = env.reset(options={'is_first_player': is_policy_network_first})
+            reset_response = id_alpha_beta_agent._send_command(
+                {"command": "RESET_ID_ALPHA_BETA", "is_first_player": first_player_policy_network
+                    # Alpha-Beta has opposite perspective
+                })
+            if verbose:
+                print(f"Alpha-Beta reset response: {reset_response}")
 
             # Track episode details
             episode_stats = {'episode': episode + 1, 'steps': 0, 'winner': None,

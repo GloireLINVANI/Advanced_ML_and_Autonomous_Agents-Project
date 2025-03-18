@@ -42,10 +42,12 @@ class IDAlphaBetaAgent:
                     print(f"Alpha-Beta reset")
                 else:
                     raise ValueError(f"Invalid agent type: {agent}")
-                response = self._send_command({"command": "RESET_ID_ALPHA_BETA", "is_first_player": env.is_first_player})
+                response = self._send_command(
+                    {"command": "RESET_ID_ALPHA_BETA", "is_first_player": env.is_first_player})
                 agent = agent if agent else 'ID Alpha-Beta'
                 print(f"{agent} reset response: {response}")
-                response = self._send_command({"command": "SET_PARAMETERS", "agent_type": agent, 'max_depth': max_depth})
+                response = self._send_command(
+                    {"command": "SET_PARAMETERS", "agent_type": agent, 'max_depth': max_depth})
                 print(f"Set parameters response: {response}")
 
             except Exception as e:
@@ -103,6 +105,7 @@ class IDAlphaBetaAgent:
             # Determine current role
             current_role = "RED" if env.current_player == 0 else "BLUE"
 
+            # print(f"Current role (inside ID Python Server): {current_role}")
             # Create command for Java server
             command = {"command": "GET_BEST_MOVE", "board": board_json, "role": current_role}
 

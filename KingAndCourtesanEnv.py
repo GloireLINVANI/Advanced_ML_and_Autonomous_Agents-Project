@@ -96,29 +96,39 @@ class KingAndCourtesanEnv(gym.Env):
         # Check if move was valid
         if not response.get("valid_move", True):
             raise ValueError(
-                f"Invalid move {move} attempted")  # Instead of raising an error, we'll give a negative reward and continue
+                f"Invalid move {move} attempted for role {current_role}")  # Instead of raising an error, we'll give a negative reward and continue
         # print(f"Warning: Invalid move {move} attempted, applying penalty")
         # return self._parse_board_state(response.get("board", [])), -1.0, False, False, {"illegal_move": True}
 
         # Parse new state
         next_state = self._parse_board_state(response["board"])
 
-        # Get reward (from perspective of the agent)
+        # Terminal rewards
         game_over = response.get("game_over", False)
-        reward = 0.0
+        # reward = 0.0
 
+        evaluation = None
         if game_over:
             winner = response.get("winner")
             agent_role = "RED" if self.is_first_player else "BLUE"
-
-            if winner == agent_role:
-                reward = 1.0  # Win
-            else:
-                reward = -1.0  # Loss
+            reward = 1.0 if winner == agent_role else -1.0
         else:
             # Optional: Small reward for capturing pieces or progressing toward goal
             # This would require tracking the board state before and after the move
-            pass
+            evaluation = self._get_board_evaluation(current_role)
+
+            # Normalize the evaluation
+            # The heuristic can return values in a wide range:
+            # - Normal values: typically between -3000 and 3000
+            # - Extreme values: ±H_WIN (Integer.MAX_VALUE) for winning/losing positions
+
+            # Capping extreme values
+            # if evaluation > 10000:  # Arbitrary large but manageable value
+            #    evaluation = 10000
+            # elif evaluation < -10000:
+            #    evaluation = -10000
+            reward = np.tanh(evaluation / 2000.0)  # Normalizing to a range suitable for neural network training
+        # reward = evaluation / 10000.0  # Scaling to roughly [-1, 1]
 
         # Update legal moves
         self.legal_moves = response.get("legal_moves", [])
@@ -127,9 +137,18 @@ class KingAndCourtesanEnv(gym.Env):
         self.current_player = 1 - self.current_player
 
         # Additional info
-        info = {"legal_moves": self.legal_moves, "current_player_role": "BLUE" if self.current_player == 1 else "RED"}
+        info = {"legal_moves": self.legal_moves, "current_player_role": "BLUE" if self.current_player == 1 else "RED",
+                "board_evaluation": evaluation}
 
+       # print(f"Evaluation: {evaluation}, Reward: {reward}")
         return next_state, reward, game_over, False, info
+
+    def _get_board_evaluation(self, role):
+        """Requests board evaluation from the server"""
+        response = self._communicate({"command": "EVALUATE_BOARD", "role": role})
+        if not response.get("board_evaluation", True):
+            raise ValueError("Board evaluation not available")
+        return float(response.get("evaluation", 0))
 
     def render(self):
         """Render the current state of the game"""

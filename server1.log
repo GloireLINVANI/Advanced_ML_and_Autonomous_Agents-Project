@@ -1,0 +1,4 @@
+Mar 18, 2025 2:12:04 AM games.kac.RL_Agents_KingAndCourtesanServer main
+INFO: King and Courtesan server started on port 3
+Mar 18, 2025 2:12:04 AM games.kac.RL_Agents_KingAndCourtesanServer main
+INFO: Configuration: boardSize=6, threads=10, clientTimeout=60s, verbose=false
