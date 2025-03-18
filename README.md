@@ -12,14 +12,13 @@ The main notebook `Reinforcement_Learning_Agents.ipynb` implements various reinf
 - Alpha-Beta pruning algorithm implementation
 - King and Courtesan game environment (in both Python and Java)
 - Training and evaluation frameworks
-- Performance comparison metrics and visualizations
 
 ## Repository Structure
 ```
 ├── Reinforcement_Learning_Agents.ipynb       # Main notebook with RL implementations
 ├── Complete_Outputs_Reinforcement_Learning_Agents.ipynb  # Notebook with execution results
 ├── KingAndCourtesanEnv.py                    # Python environment for the game
-├── IDAlphaBetaClient.py                      # Iterative Deepening Alpha-Beta implementation
+├── IDAlphaBetaClient.py                      # Iterative Deepening Alpha-Beta client implementation
 ├── King_and_Courtesan_Game_Java/             # Java implementation of the game
 ├── models/RL_Agents/                         # Trained RL agent models
 ├── checkpoints/reinforce/                    # Training checkpoints
@@ -32,42 +31,20 @@ The main notebook `Reinforcement_Learning_Agents.ipynb` implements various reinf
 
 ## Technologies Used
 - **Python**: Core implementation of RL algorithms
-- **Java**: Alternative implementation of the game environment
+- **Java**: Core implementation of the game environment
 - **Jupyter Notebook**: Interactive development and visualization
-- **Libraries**: TensorFlow/PyTorch (implied for RL implementations)
-
-## Installation
-```bash
-# Clone the repository
-git clone https://github.com/GloireLINVANI/Advanced_ML_and_Autonomous_Agents-Project.git
-cd Advanced_ML_and_Autonomous_Agents-Project
-
-# Install requirements
-pip install -r requirements.txt
-```
+- **Libraries**: PyTorch
 
 ## Usage
 Launch the main notebook to explore the implementations and experiments:
-```bash
-jupyter notebook Reinforcement_Learning_Agents.ipynb
-```
 
 The notebook guides you through:
 1. Understanding the King and Courtesan game rules and dynamics
 2. Implementing various RL agents for the game
 3. Training and evaluating the agents
 4. Comparing performance with tree search approaches
-5. Analyzing results and insights
 
 ## Methodology
 This project implements a comparative approach between:
 - **Tree Search Methods**: Alpha-Beta pruning with iterative deepening
 - **Reinforcement Learning**: Various algorithms including policy-based and value-based methods
-
-Results are analyzed in terms of win rates, decision quality, and computational efficiency.
-
-## Contributing
-Contributions are welcome. Please feel free to submit a pull request or open an issue.
-
-## License
-[License information not specified in the repository]
